@@ -1,0 +1,207 @@
+\documentclass[journal,12pt,onecolumn]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} % loads  TikZ and tkz-base
+\usepackage{listings}
+\usepackage{float}
+
+
+\begin{document}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\prt}[2]{\ensuremath{p_{#1}^{\left(#2\right)} }}        % own macro for this question
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\cond}[2]{#1\middle|#2}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+\newenvironment{amatrix}[1]{%
+  \left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right)
+}
+\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{Z}}{\longleftrightarrow}}
+\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\newcommand{\myaugvec}[2]{\ensuremath{\begin{amatrix}{#1}#2\end{amatrix}}}
+\providecommand{\rank}{\text{rank}}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+	\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\gauss}[2]{\mathcal{N}\ensuremath{\left(#1,#2\right)}}
+\providecommand{\diff}[2]{\ensuremath{\frac{d{#1}}{d{#2}}}}
+%\providecommand{\myceil}[1]{\left \lceil #1 \right \rceil }
+\newcommand\figref{Fig.~\ref}
+\newcommand\tabref{Table~\ref}
+\newcommand{\sinc}{\,\text{sinc}\,}
+\newcommand{\rect}{\,\text{rect}\,}
+%%
+%	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+%\newcommand{\solution}{\noindent \textbf{Solution: }}
+%\newcommand{\cosec}{\,\text{cosec}\,}
+%\numberwithin{equation}{section}
+%\numberwithin{equation}{subsection}
+%\numberwithin{problem}{section}
+%\numberwithin{definition}{section}
+%\makeatletter
+%\@addtoreset{figure}{problem}
+%\makeatother
+
+%\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+
+\bibliographystyle{IEEEtran}
+
+\vspace{3cm}
+
+\title{EE1205: Signals and Systems - TA}
+\author{EE22BTECH11039 - Pandrangi Aditya Sriram}
+\maketitle
+
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+
+\begin{enumerate}
+%\begin{enumerate}[label=\thechapter.\arabic*,ref=\thechapter.\theenumi]
+\numberwithin{equation}{enumi}
+\numberwithin{figure}{enumi}
+\numberwithin{table}{enumi}
+\item 
+	The $Z$-transform of $p(n)$ is defined as
+\begin{align}
+P(z) = \sum_{n=-\infty}^{\infty}p(n)z^{-n}
+\label{eq:ztrans}
+\end{align}
+\item If 
+\begin{align}
+	p(n) &= p_1(n)* p_2(n),
+	\\
+	P(z)&=P_1(z)P_2(z)
+\label{eq:prodz}
+\end{align}
+\item For a Geometric progression 
+\begin{align}
+	       \label{eq:gpn}
+	x\brak{n} &=x\brak{0}r^nu\brak{n},
+	\\
+         \implies      X\brak{z} &= \sum_{n=-\infty}^{\infty}x\brak{n}z^{-n}
+               =\sum_{n=0}^{\infty}x\brak{0}r^nz^{-n}\\
+                &=\sum_{n=0}^{\infty}x\brak{0}\brak{rz^{-1}}^n\\
+               &= \frac{x\brak{0}}{1-rz^{-1}}, \quad \abs{z}>\abs{r} 
+	       \label{eq:gpz}
+\end{align}
+\item 	       Substituting $r = 1$ in \eqref{eq:gpz},
+\begin{align}
+	u(n) \system{Z}	U(z) = 
+                \frac{1}{1-z^{-1}}, \quad \abs{z}>1
+	       \label{eq:uz}
+\end{align}
+\item From 
+\eqref{eq:ztrans}
+	       and 
+	       \eqref{eq:uz},
+\begin{align}
+	U(z) &= \sum_{n = -\infty}^{\infty} u(n) z^{-n} 
+	\\
+\implies	\frac{dU(z)}{dz} &= -{z}^{-1} \sum_{n = -\infty}^{\infty} nu(n) z^{-n}\\
+\therefore	nu(n) &\system{Z}\frac{z^{-1}}{(1-z^{-1})^{2}}, \quad \abs{z} > 1 
+	       \label{eq:uzder}
+\end{align}
+\item For an AP, 
+\begin{align}
+	x(n) &= \sbrak{x(0) + nd} u(n) = x(0)u(n) + dnu(n)  \\
+	\implies X(z) &= \frac{x(0)}{1-z^{-1}} + \frac{dz^{-1}}{(1-z^{-1})^{2}}, \quad \abs{z} > 1 
+	       \label{eq:apz}
+\end{align}
+upon substituting from 
+	       \eqref{eq:uz}
+	       and
+	       \eqref{eq:uzder}.
+\item From 
+	\eqref{eq:conv-sum},  the sum to $n$ terms  of a GP can be expressed as
+\begin{align}
+	y(n) = x(n)*u(n) 
+\end{align}
+		where $x(n)$ is defined in 
+	       \eqref{eq:gpn}.
+From \eqref{eq:prodz}, \eqref{eq:gpz} and \eqref{eq:uz},
+\begin{align}
+	Y\brak{z}&= X\brak{z} U\brak{z}
+	\\
+	&=\brak{\frac{x\brak{0}}{1-rz^{-1}}}\brak{\frac{1}{1-z^{-1}}} \quad \abs{z} > \abs{r} \cap \abs{z}>\abs{1}
+	\\
+	&=\frac{x\brak{0}}{\brak{1-rz^{-1}}\brak{1-z^{-1}}} \quad \abs{z} > \abs{r} 
+\end{align}
+which can be expressed as
+\begin{align}
+	Y\brak{z}&=\frac{x\brak{0}}{r-1}\brak{\frac{r}{1-rz^{-1}} - \frac{1}{1-z^{-1}}}
+\end{align}
+using partial fractions.  Again, from \eqref{eq:gpz} and \eqref{eq:uz}, the inverse of the above can be expressed as
+\begin{align}
+	y\brak{n}
+	&=x\brak{0}\brak{\frac{r^{n+1}-1}{r-1}}u\brak{n}
+\end{align}
+
+\item For the AP $x(n)$, the sum of first $n+1$ terms can be expressed as
+\begin{align}
+y(n) &= \sum_{k=0}^{n} x(k)\\
+\implies y(n) &= \sum_{k=-\infty}^{\infty} x(k) u(n-k)\\
+&= x(n) * u(n)
+\end{align}
+Taking the Z-transform on both sides, and substituting \eqref{eq:apz} and \eqref{eq:uz} (making use of the convolution property of Z-transform),
+\begin{align}
+Y(z) &= X(z) U(z)\\
+\implies Y(z) &= \brak{\frac{x(0)}{1-z^{-1}} + \frac{dz^{-1}}{(1-z^{-1})^{2}}}\frac{1}{1-z^{-1}} \quad \abs{z} > 1 \\
+&= \frac{x(0)}{({1-z^{-1}})^2} + \frac{dz^{-1}}{(1-z^{-1})^{3}}, \quad \abs{z} > 1 \label{eq:APSum}
+\end{align}
+But
+\begin{align}
+\frac{1}{({1-z^{-1}})^2} &= z\frac{z^{-1}}{({1-z^{-1}})^2}\\
+\text{and w.k.t. } x(n+1) &\system zX(z), \quad \abs{z} > 1 \label{eq:time_shift}
+\end{align}
+From \eqref{eq:uzder} and \eqref{eq:time_shift}, 
+\begin{align}
+(n+1) u(n) &\system \frac{1}{({1-z^{-1}})^2}, \quad \abs{z} > 1
+\end{align}
+Also, w.k.t
+\begin{align}
+nx(n) &\system -z\frac{d}{dz}X(z)\\
+\therefore \frac{z^{-1}}{(1-z^{-1})^{3}} = -\frac{z}{2}\frac{d}{dz}\sbrak{\frac{1}{(1-z^{-1})^{2}}} &\system \frac{1}{2}n\sbrak{(n+1)u(n)}
+\end{align}
+Therefore, taking inverse Z-transform of \eqref{eq:APSum}
+\begin{align}
+y(n) &= x(0)\sbrak{(n + 1)u(n)} + \frac{d}{2}\sbrak{n(n + 1)u(n)}\\
+&= \frac{n+1}{2}\brak{2x(0) + nd}u(n)
+\end{align}
+\end{enumerate}
+\end{document}
